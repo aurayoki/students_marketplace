@@ -20,30 +20,32 @@ public class User {
     private Long id;
 
     @Column(name = "first_name", length = 30)
-    private String first_name;
+    private String firstName;
 
     @Column(name = "last_name", length = 30)
-    private String last_name;
+    private String lastName;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "email", unique = true)
     private String email;
 
-    @Column(name = "city")
-    private String city;
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
 
     @Column(name = "age")
-    @NotNull
     private Short age;
 
-    @Column(name = "phone_number", unique = true)
-    private String phone_number;
+    @Column(name = "phone", unique = true)
+    private String phone;
 
     @ManyToMany
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+
 }
