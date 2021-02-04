@@ -3,7 +3,7 @@ package com.jm.marketplace.models;
 import javax.persistence.*;
 
 @Entity
-public class advertisement {
+public class Advertisement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,15 +20,15 @@ public class advertisement {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "good_category_id", nullable = false)
-    private goodCategory goodCategory;
+    private GoodCategory goodCategory;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "good_subcategory_id", nullable = false)
-    private goodSubcategory goodSubcategory;
+    private GoodSubcategory goodSubcategory;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "good_type_id", nullable = false)
-    private goodType goodType;
+    private GoodType goodType;
 
     public void setId(Long id) {
         this.id = id;
@@ -62,27 +62,27 @@ public class advertisement {
         this.desription = desription;
     }
 
-    public com.jm.marketplace.models.goodCategory getGoodCategory() {
+    public GoodCategory getGoodCategory() {
         return goodCategory;
     }
 
-    public void setGoodCategory(com.jm.marketplace.models.goodCategory goodCategory) {
+    public void setGoodCategory(GoodCategory goodCategory) {
         this.goodCategory = goodCategory;
     }
 
-    public com.jm.marketplace.models.goodSubcategory getGoodSubcategory() {
+    public GoodSubcategory getGoodSubcategory() {
         return goodSubcategory;
     }
 
-    public void setGoodSubcategory(com.jm.marketplace.models.goodSubcategory goodSubcategory) {
+    public void setGoodSubcategory(GoodSubcategory goodSubcategory) {
         this.goodSubcategory = goodSubcategory;
     }
 
-    public com.jm.marketplace.models.goodType getGoodType() {
+    public GoodType getGoodType() {
         return goodType;
     }
 
-    public void setGoodType(com.jm.marketplace.models.goodType goodType) {
+    public void setGoodType(GoodType goodType) {
         this.goodType = goodType;
     }
 }

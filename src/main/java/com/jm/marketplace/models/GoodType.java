@@ -5,7 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="good_type")
-public class goodType {
+public class GoodType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,10 +16,10 @@ public class goodType {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "good_subcategory_id", nullable=false)
-    private goodSubcategory goodSubcategory;
+    private GoodSubcategory goodSubcategory;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy="goodType")
-    private Set<advertisement> advertisement;
+    private Set<Advertisement> advertisement;
 
     public String getName() {
         return name;
@@ -37,19 +37,19 @@ public class goodType {
         return id;
     }
 
-    public com.jm.marketplace.models.goodSubcategory getGoodSubcategory() {
+    public GoodSubcategory getGoodSubcategory() {
         return goodSubcategory;
     }
 
-    public void setGoodSubcategory(com.jm.marketplace.models.goodSubcategory goodSubcategory) {
+    public void setGoodSubcategory(GoodSubcategory goodSubcategory) {
         this.goodSubcategory = goodSubcategory;
     }
 
-    public Set<com.jm.marketplace.models.advertisement> getAdvertisement() {
+    public Set<Advertisement> getAdvertisement() {
         return advertisement;
     }
 
-    public void setAdvertisement(Set<com.jm.marketplace.models.advertisement> advertisement) {
+    public void setAdvertisement(Set<Advertisement> advertisement) {
         this.advertisement = advertisement;
     }
 

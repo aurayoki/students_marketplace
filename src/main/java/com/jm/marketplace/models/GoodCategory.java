@@ -5,7 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="good_category")
-public class goodCategory {
+public class GoodCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +15,10 @@ public class goodCategory {
     private String name;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "goodCategory")
-    private Set<goodSubcategory> goodSubcategory;
+    private Set<GoodSubcategory> goodSubcategory;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "goodCategory")
-    private Set<advertisement> advertisement;
+    private Set<Advertisement> advertisement;
 
     public String getName() {
         return name;
@@ -28,11 +28,11 @@ public class goodCategory {
         this.name = name;
     }
 
-    public Set<goodSubcategory> goodSubcategory() {
+    public Set<GoodSubcategory> goodSubcategory() {
         return goodSubcategory;
     }
 
-    public void goodSubcategory(Set<goodSubcategory> goodSubcategory) {
+    public void goodSubcategory(Set<GoodSubcategory> goodSubcategory) {
         this.goodSubcategory = goodSubcategory;
     }
 
@@ -44,19 +44,19 @@ public class goodCategory {
         return id;
     }
 
-    public Set<com.jm.marketplace.models.goodSubcategory> getGoodSubcategory() {
+    public Set<GoodSubcategory> getGoodSubcategory() {
         return goodSubcategory;
     }
 
-    public void setGoodSubcategory(Set<com.jm.marketplace.models.goodSubcategory> goodSubcategory) {
+    public void setGoodSubcategory(Set<GoodSubcategory> goodSubcategory) {
         this.goodSubcategory = goodSubcategory;
     }
 
-    public Set<com.jm.marketplace.models.advertisement> getAdvertisement() {
+    public Set<Advertisement> getAdvertisement() {
         return advertisement;
     }
 
-    public void setAdvertisement(Set<com.jm.marketplace.models.advertisement> advertisement) {
+    public void setAdvertisement(Set<Advertisement> advertisement) {
         this.advertisement = advertisement;
     }
 }
