@@ -15,7 +15,6 @@
     <description>Students project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
-        <vaadin.version>14.4.7</vaadin.version>
     </properties>
     <dependencies>
         <dependency>
@@ -99,7 +98,6 @@
         <profile>
             <id>production</id>
                 <properties>
-                    <vaadin.productionMode>true</vaadin.productionMode>
                 </properties>
         </profile>
     </profiles>
