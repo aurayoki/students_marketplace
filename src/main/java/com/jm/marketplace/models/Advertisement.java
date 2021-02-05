@@ -1,5 +1,9 @@
 package com.jm.marketplace.models;
 
+import com.jm.marketplace.models.goods.GoodCategory;
+import com.jm.marketplace.models.goods.GoodSubcategory;
+import com.jm.marketplace.models.goods.GoodType;
+
 import javax.persistence.*;
 
 @Entity

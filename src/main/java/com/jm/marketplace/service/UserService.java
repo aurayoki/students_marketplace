@@ -1,9 +1,8 @@
 package com.jm.marketplace.service;
 
-import com.jm.marketplace.model.User;
+import com.jm.marketplace.models.user.User;
 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
 
 public interface UserService {

@@ -3,7 +3,7 @@ package com.jm.marketplace.service;
 import com.jm.marketplace.dao.UserDao;
 import com.jm.marketplace.exception.UserEmailExistsException;
 import com.jm.marketplace.exception.UserPhoneExistsException;
-import com.jm.marketplace.model.User;
+import com.jm.marketplace.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

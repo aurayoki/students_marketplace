@@ -1,6 +1,8 @@
-package com.jm.marketplace.model;
+package com.jm.marketplace.models.user;
 
 
+import com.jm.marketplace.models.City;
+import com.jm.marketplace.models.Role;
 import lombok.*;
 
 import javax.persistence.*;

@@ -1,26 +1,21 @@
-package com.jm.marketplace.model;
+package com.jm.marketplace.models;
 
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "city")
-@AllArgsConstructor
-@NoArgsConstructor
+@Table(name = "roles")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class City {
+public class Role {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")
     private String name;
-
-    @Override
-    public String toString() {
-        return name;
-    }
 }

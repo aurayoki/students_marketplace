@@ -1,11 +1,13 @@
-package com.jm.marketplace.models;
+package com.jm.marketplace.models.goods;
+
+import com.jm.marketplace.models.Advertisement;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="good_type")
-public class GoodType {
+@Table(name="good_category")
+public class GoodCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,11 +16,10 @@ public class GoodType {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "good_subcategory_id", nullable=false)
-    private GoodSubcategory goodSubcategory;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "goodCategory")
+    private Set<GoodSubcategory> goodSubcategory;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy="goodType")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "goodCategory")
     private Set<Advertisement> advertisement;
 
     public String getName() {
@@ -29,6 +30,14 @@ public class GoodType {
         this.name = name;
     }
 
+    public Set<GoodSubcategory> goodSubcategory() {
+        return goodSubcategory;
+    }
+
+    public void goodSubcategory(Set<GoodSubcategory> goodSubcategory) {
+        this.goodSubcategory = goodSubcategory;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -37,11 +46,11 @@ public class GoodType {
         return id;
     }
 
-    public GoodSubcategory getGoodSubcategory() {
+    public Set<GoodSubcategory> getGoodSubcategory() {
         return goodSubcategory;
     }
 
-    public void setGoodSubcategory(GoodSubcategory goodSubcategory) {
+    public void setGoodSubcategory(Set<GoodSubcategory> goodSubcategory) {
         this.goodSubcategory = goodSubcategory;
     }
 
@@ -52,5 +61,4 @@ public class GoodType {
     public void setAdvertisement(Set<Advertisement> advertisement) {
         this.advertisement = advertisement;
     }
-
 }
