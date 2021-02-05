@@ -1,7 +1,7 @@
-package com.jm.marketplace.service;
+package com.jm.marketplace.service.city;
 
 import com.jm.marketplace.dao.CityDao;
-import com.jm.marketplace.models.City;
+import com.jm.marketplace.model.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

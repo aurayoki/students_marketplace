@@ -1,6 +1,6 @@
-package com.jm.marketplace.service;
+package com.jm.marketplace.service.user;
 
-import com.jm.marketplace.models.user.User;
+import com.jm.marketplace.model.user.User;
 
 import java.time.LocalDate;
 import java.util.List;

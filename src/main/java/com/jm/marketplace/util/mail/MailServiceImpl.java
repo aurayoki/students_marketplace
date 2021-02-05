@@ -1,6 +1,6 @@
 package com.jm.marketplace.util.mail;
 
-import com.jm.marketplace.models.user.User;
+import com.jm.marketplace.model.user.User;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;

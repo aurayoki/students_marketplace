@@ -1,4 +1,4 @@
-package com.jm.marketplace.service;
+package com.jm.marketplace.service.role;
 
 import com.jm.marketplace.dao.RoleDao;
 import org.springframework.beans.factory.annotation.Autowired;

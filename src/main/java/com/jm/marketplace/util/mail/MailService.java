@@ -1,6 +1,6 @@
 package com.jm.marketplace.util.mail;
 
-import com.jm.marketplace.models.user.User;
+import com.jm.marketplace.model.user.User;
 
 import java.io.File;
 import java.util.Collection;

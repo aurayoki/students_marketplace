@@ -1,9 +1,9 @@
-package com.jm.marketplace.service;
+package com.jm.marketplace.service.user;
 
 import com.jm.marketplace.dao.UserDao;
 import com.jm.marketplace.exception.UserEmailExistsException;
 import com.jm.marketplace.exception.UserPhoneExistsException;
-import com.jm.marketplace.models.user.User;
+import com.jm.marketplace.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findUserByBirthday(LocalDate date) {
-        return null;
+        return userDao.findUserByBirthday(date);
     }
 
     @Override

@@ -1,6 +1,6 @@
-package com.jm.marketplace.models.goods;
+package com.jm.marketplace.model.goods;
 
-import com.jm.marketplace.models.Advertisement;
+import com.jm.marketplace.model.Advertisement;
 
 import javax.persistence.*;
 import java.util.Set;

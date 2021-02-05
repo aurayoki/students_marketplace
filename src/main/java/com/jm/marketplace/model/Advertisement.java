@@ -1,8 +1,8 @@
-package com.jm.marketplace.models;
+package com.jm.marketplace.model;
 
-import com.jm.marketplace.models.goods.GoodCategory;
-import com.jm.marketplace.models.goods.GoodSubcategory;
-import com.jm.marketplace.models.goods.GoodType;
+import com.jm.marketplace.model.goods.GoodCategory;
+import com.jm.marketplace.model.goods.GoodSubcategory;
+import com.jm.marketplace.model.goods.GoodType;
 
 import javax.persistence.*;
 

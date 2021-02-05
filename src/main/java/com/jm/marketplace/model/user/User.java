@@ -1,18 +1,29 @@
-package com.jm.marketplace.models.user;
+package com.jm.marketplace.model.user;
 
+import com.jm.marketplace.model.City;
+import com.jm.marketplace.model.Role;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import com.jm.marketplace.models.City;
-import com.jm.marketplace.models.Role;
-import lombok.*;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@Builder
 @Setter
 @Getter
 @NoArgsConstructor
@@ -41,7 +52,7 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "city_id")
-    @NotBlank
+    @NotNull
     private City city;
 
     @Column(name = "date")
@@ -51,6 +62,9 @@ public class User {
     @Column(name = "phone", unique = true)
     @NotBlank
     private String phone;
+
+    @Column(name = "user_img")
+    private String userImg;
 
     @ManyToMany
     @JoinTable(name = "users_roles",

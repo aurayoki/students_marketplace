@@ -1,6 +1,6 @@
-package com.jm.marketplace.service;
+package com.jm.marketplace.service.city;
 
-import com.jm.marketplace.models.City;
+import com.jm.marketplace.model.City;
 
 import java.util.List;
 
