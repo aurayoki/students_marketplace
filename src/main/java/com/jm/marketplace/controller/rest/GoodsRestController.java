@@ -1,6 +1,6 @@
 package com.jm.marketplace.controller.rest;
 
-import com.jm.marketplace.dto.goods.AdvertisementViewDto;
+import com.jm.marketplace.dto.goods.AdvertisementDto;
 import com.jm.marketplace.service.advertisement.AdvertisementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,26 +31,26 @@ public class GoodsRestController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public List<AdvertisementViewDto> getAll() {
+    public List<AdvertisementDto> getAll() {
         return advertisementService.findAll();
     }
 
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public AdvertisementViewDto getById(@PathVariable(name = "id") Long id) {
+    public AdvertisementDto getById(@PathVariable(name = "id") Long id) {
         return advertisementService.findById(id);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody @Valid AdvertisementViewDto advertisementViewDto) {
-        advertisementService.saveOrUpdate(advertisementViewDto);
+    public void save(@RequestBody @Valid AdvertisementDto advertisementDto) {
+        advertisementService.saveOrUpdate(advertisementDto);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void update(@RequestBody @Valid AdvertisementViewDto advertisementViewDto) {
-        advertisementService.saveOrUpdate(advertisementViewDto);
+    public void update(@RequestBody @Valid AdvertisementDto advertisementDto) {
+        advertisementService.saveOrUpdate(advertisementDto);
     }
 
     @DeleteMapping("{id}")
