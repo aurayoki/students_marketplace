@@ -1,13 +1,14 @@
 package com.jm.marketplace;
 
-import com.jm.marketplace.congratulation.BirthdayCongratulation;
 import com.jm.marketplace.congratulation.quartzconfig.JobConfiguration;
 import com.mchange.v2.beans.swing.TestBean;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.quartz.*;
-import org.quartz.impl.StdSchedulerFactory;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerContext;
+import org.quartz.SchedulerException;
+import org.quartz.SchedulerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.support.StaticApplicationContext;
@@ -22,17 +23,13 @@ import static junit.framework.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
-import static org.quartz.JobBuilder.newJob;
-import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
-import static org.quartz.TriggerBuilder.newTrigger;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestApplication.class)
 @ContextConfiguration(classes = JobConfiguration.class)
-@TestPropertySource(properties =
-        {"spring.quartz.properties.org.quartz.scheduler.instanceId=AUTO",
-                "quartz.enabled=true",
-                "quartz.persistence.persisted=false"})
+@TestPropertySource(properties = {"quartz.enabled=true",
+                "quartz.persistence.persisted=false",
+                "spring.quartz.properties.org.quartz.scheduler.instanceId=AUTO"})
 @DirtiesContext
 public class QuartzTest {
 
@@ -41,14 +38,6 @@ public class QuartzTest {
 
     @Autowired
     private QuartzJobBean quartzJobBean;
-
-    @Before
-    public void before() {
-        mockJobIdentifier("job-name", "group");
-    }
-
-    private void mockJobIdentifier(String jobName, String groupName) {
-    }
 
     @Test
     public void startEnvironment() throws SchedulerException {
@@ -71,30 +60,5 @@ public class QuartzTest {
                 return scheduler;
             }
         };
-    }
-
-    @Test
-    public void BirthdayCongratulationTest() {
-        try {
-//             Получить Scheduler instance(экземпляр планировщика )  из фабрики
-            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
-//             запуск
-            scheduler.start();
-            JobDetail job = newJob(BirthdayCongratulation.class)
-                    .withIdentity("job1", "group1")
-                    .build();
-//             Запуск триггера и повтор каждые 40 сек
-            Trigger trigger = newTrigger()
-                    .withIdentity("trigger1", "group1")
-                    .startNow()
-                    .withSchedule(simpleSchedule()
-                            .withIntervalInSeconds(40)
-                            .repeatForever())
-                    .build();
-            scheduler.scheduleJob(job, trigger);
-            scheduler.shutdown();
-        } catch (SchedulerException se) {
-            se.printStackTrace();
-        }
     }
 }
