@@ -53,7 +53,6 @@ public class QuartzTest {
         final Scheduler scheduler = mock(Scheduler.class);
         SchedulerContext schedulerContext = new SchedulerContext();
         given(scheduler.getContext()).willReturn(schedulerContext);
-
         SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean() {
             @Override
             protected Scheduler createScheduler(SchedulerFactory schedulerFactory, String schedulerName) {
