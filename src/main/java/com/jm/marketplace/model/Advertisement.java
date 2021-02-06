@@ -3,6 +3,7 @@ package com.jm.marketplace.model;
 import com.jm.marketplace.model.goods.GoodCategory;
 import com.jm.marketplace.model.goods.GoodSubcategory;
 import com.jm.marketplace.model.goods.GoodType;
+import com.jm.marketplace.model.user.User;
 
 import javax.persistence.*;
 
@@ -21,6 +22,13 @@ public class Advertisement {
 
     @Column(name = "description")
     private String desription;
+
+    @Column(name = "image")
+    private String image;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "good_category_id", nullable = false)
@@ -88,5 +96,21 @@ public class Advertisement {
 
     public void setGoodType(GoodType goodType) {
         this.goodType = goodType;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

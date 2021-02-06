@@ -20,9 +20,6 @@ public class GoodType {
     @JoinColumn(name = "good_subcategory_id", nullable=false)
     private GoodSubcategory goodSubcategory;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy="goodType")
-    private Set<Advertisement> advertisement;
-
     public String getName() {
         return name;
     }
@@ -45,14 +42,6 @@ public class GoodType {
 
     public void setGoodSubcategory(GoodSubcategory goodSubcategory) {
         this.goodSubcategory = goodSubcategory;
-    }
-
-    public Set<Advertisement> getAdvertisement() {
-        return advertisement;
-    }
-
-    public void setAdvertisement(Set<Advertisement> advertisement) {
-        this.advertisement = advertisement;
     }
 
 }

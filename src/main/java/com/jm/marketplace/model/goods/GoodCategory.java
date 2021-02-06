@@ -19,9 +19,6 @@ public class GoodCategory {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "goodCategory")
     private Set<GoodSubcategory> goodSubcategory;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "goodCategory")
-    private Set<Advertisement> advertisement;
-
     public String getName() {
         return name;
     }
@@ -54,11 +51,4 @@ public class GoodCategory {
         this.goodSubcategory = goodSubcategory;
     }
 
-    public Set<Advertisement> getAdvertisement() {
-        return advertisement;
-    }
-
-    public void setAdvertisement(Set<Advertisement> advertisement) {
-        this.advertisement = advertisement;
-    }
 }
