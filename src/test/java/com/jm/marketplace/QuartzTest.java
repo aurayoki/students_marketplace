@@ -2,7 +2,6 @@ package com.jm.marketplace;
 
 import com.jm.marketplace.congratulation.quartzconfig.JobConfiguration;
 import com.mchange.v2.beans.swing.TestBean;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.quartz.Scheduler;
