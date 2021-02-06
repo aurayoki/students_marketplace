@@ -8,9 +8,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -28,32 +36,25 @@ User {
     private Long id;
 
     @Column(name = "first_name", length = 30)
-    @NotBlank
     private String firstName;
 
     @Column(name = "last_name", length = 30)
-    @NotBlank
     private String lastName;
 
     @Column(name = "password", nullable = false)
-    @NotBlank
     private String password;
 
     @Column(name = "email", unique = true)
-    @NotBlank
     private String email;
 
     @ManyToOne
     @JoinColumn(name = "city_id")
-    @NotNull
     private City city;
 
     @Column(name = "date")
-    @NotBlank
     private LocalDate date;
 
     @Column(name = "phone", unique = true)
-    @NotBlank
     private String phone;
 
     @Column(name = "user_img")
