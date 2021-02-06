@@ -1,4 +1,4 @@
-package com.jm.marketplace.controller;
+package com.jm.marketplace.controller.rest;
 
 import com.jm.marketplace.dto.goods.AdvertisementViewDto;
 import com.jm.marketplace.service.advertisement.AdvertisementService;
@@ -20,12 +20,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v1/goods")
-public class GoodsController {
+public class GoodsRestController {
 
     private final AdvertisementService advertisementService;
 
     @Autowired
-    public GoodsController(AdvertisementService advertisementService) {
+    public GoodsRestController(AdvertisementService advertisementService) {
         this.advertisementService = advertisementService;
     }
 

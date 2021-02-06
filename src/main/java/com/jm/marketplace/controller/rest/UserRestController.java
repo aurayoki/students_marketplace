@@ -1,4 +1,4 @@
-package com.jm.marketplace.controllers.rest;
+package com.jm.marketplace.controller.rest;
 
 import com.jm.marketplace.model.user.User;
 import com.jm.marketplace.service.user.UserService;
