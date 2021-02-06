@@ -1,7 +1,6 @@
 package com.jm.marketplace.service.user;
 
 import com.jm.marketplace.config.mapper.MapperFacade;
-import com.jm.marketplace.config.mapper.MapperFacadeImpl;
 import com.jm.marketplace.dao.UserDao;
 import com.jm.marketplace.dto.UserDto;
 import com.jm.marketplace.exception.UserEmailExistsException;
@@ -11,27 +10,26 @@ import com.jm.marketplace.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
-    private final MapperFacadeImpl mapperFacade;
+    private final MapperFacade mapperFacade;
 
     @Autowired
-    public UserServiceImpl(UserDao userDao, MapperFacadeImpl mapperFacade) {
+    public UserServiceImpl(UserDao userDao, MapperFacade mapperFacade) {
         this.userDao = userDao;
         this.mapperFacade = mapperFacade;
     }
 
     @Override
     @Transactional
-    public void saveUser(User user) {
-        userDao.save(user);
+    public void saveUser(UserDto userDto) {
+        userDao.save(mapperFacade.map(userDto, User.class));
     }
 
     @Transactional(readOnly = true)

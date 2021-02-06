@@ -1,23 +1,27 @@
 package com.jm.marketplace.controller.rest;
 
 import com.jm.marketplace.dto.UserDto;
-import com.jm.marketplace.model.user.User;
-import com.jm.marketplace.service.advertisement.AdvertisementService;
 import com.jm.marketplace.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/user")
 public class UserRestController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserRestController(UserService userService) {
@@ -38,14 +42,14 @@ public class UserRestController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void addNewUser(@RequestBody User user) {
-        userService.saveUser(user);
+    public void addNewUser(@RequestBody UserDto userDto) {
+        userService.saveUser(userDto);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void editUser(@RequestBody User user) {
-        userService.saveUser(user);
+    public void editUser(@RequestBody UserDto userDto) {
+        userService.saveUser(userDto);
     }
 
     @DeleteMapping(value = "{id}")
