@@ -15,13 +15,9 @@ public interface UserService {
 
     List<User> findAll();
 
-    List<User> findAllById(ArrayList<Long> arrayList);
-
     Optional<User> findById(Long id);
 
-    void deleteInBatch(ArrayList<User> arrayList);
-
-    User getOne(Long id);
+    void deleteById(Long id);
 
     User findByEmail(String email);
 

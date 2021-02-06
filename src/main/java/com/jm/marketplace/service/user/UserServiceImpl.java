@@ -45,14 +45,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAllById(ArrayList<Long> arrayList) { return userDao.findAllById(arrayList); }
-
-    @Override
-    public void deleteInBatch(ArrayList<User> arrayList) { userDao.deleteInBatch(arrayList); };
-
-    @Override
-    public User getOne(Long id) {
-        return userDao.getOne(id);
+    public void deleteById(Long id) {
+      userDao.deleteById(id);
     }
 
     @Override

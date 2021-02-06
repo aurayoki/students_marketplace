@@ -1,12 +1,20 @@
 package com.jm.marketplace.model.goods;
 
 import com.jm.marketplace.model.Advertisement;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name="good_category")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class GoodCategory {
 
     @Id
