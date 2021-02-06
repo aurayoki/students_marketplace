@@ -1,5 +1,6 @@
 package com.jm.marketplace.controller.rest;
 
+import com.jm.marketplace.dto.UserDto;
 import com.jm.marketplace.model.user.User;
 import com.jm.marketplace.service.advertisement.AdvertisementService;
 import com.jm.marketplace.service.user.UserService;
@@ -25,13 +26,13 @@ public class UserRestController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public List<User> showAllUsers() {
+    public List<UserDto> showAllUsers() {
         return userService.findAll();
     }
 
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public Optional<User> getUser(@PathVariable(name = "id") Long id) {
+    public UserDto getUser(@PathVariable(name = "id") Long id) {
         return userService.findById(id);
     }
 

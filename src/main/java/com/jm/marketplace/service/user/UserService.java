@@ -1,5 +1,7 @@
 package com.jm.marketplace.service.user;
 
+import com.jm.marketplace.config.mapper.MapperFacade;
+import com.jm.marketplace.dto.UserDto;
 import com.jm.marketplace.model.user.User;
 
 import java.time.LocalDate;
@@ -13,9 +15,9 @@ public interface UserService {
 
     List<User> findUserByBirthday(LocalDate date);
 
-    List<User> findAll();
+    List<UserDto> findAll();
 
-    Optional<User> findById(Long id);
+    UserDto findById(Long id);
 
     void deleteById(Long id);
 
