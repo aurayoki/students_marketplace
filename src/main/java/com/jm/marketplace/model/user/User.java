@@ -65,7 +65,7 @@ User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    @OneToMany(mappedBy="users")
+    @OneToMany(mappedBy="user")
     private Set<Advertisement> advertisements;
 
     public User(String firstName, String lastName, String password, String email, City city, LocalDate date, String phone) {
