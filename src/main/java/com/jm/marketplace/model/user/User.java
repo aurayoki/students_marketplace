@@ -1,5 +1,6 @@
 package com.jm.marketplace.model.user;
 
+import com.jm.marketplace.model.Advertisement;
 import com.jm.marketplace.model.City;
 import com.jm.marketplace.model.Role;
 import lombok.AllArgsConstructor;
@@ -7,16 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -72,6 +64,8 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    @OneToMany(mappedBy="users")
+    private Set<Advertisement> advertisements;
 
     public User(String firstName, String lastName, String password, String email, City city, LocalDate date, String phone) {
         this.firstName = firstName;
