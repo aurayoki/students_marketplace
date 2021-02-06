@@ -3,7 +3,9 @@ package com.jm.marketplace.service.user;
 import com.jm.marketplace.model.user.User;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
@@ -12,6 +14,14 @@ public interface UserService {
     List<User> findUserByBirthday(LocalDate date);
 
     List<User> findAll();
+
+    List<User> findAllById(ArrayList<Long> arrayList);
+
+    Optional<User> findById(Long id);
+
+    void deleteInBatch(ArrayList<User> arrayList);
+
+    User getOne(Long id);
 
     User findByEmail(String email);
 
