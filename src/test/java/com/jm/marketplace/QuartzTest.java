@@ -6,7 +6,9 @@ import com.jm.marketplace.model.user.User;
 import com.jm.marketplace.service.user.UserService;
 import com.jm.marketplace.util.mail.MailService;
 import com.mchange.v2.beans.swing.TestBean;
+import org.junit.Rule;
 import org.junit.jupiter.api.Test;
+import org.junit.rules.TemporaryFolder;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.quartz.*;
@@ -18,6 +20,9 @@ import org.springframework.context.support.StaticApplicationContext;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +36,7 @@ public class QuartzTest {
 
     @Autowired
     ApplicationContext applicationContext;
+
     @Autowired
     private Scheduler scheduler;
 
@@ -46,6 +52,9 @@ public class QuartzTest {
     @Autowired
     private MailService mailService;
 
+    @Rule
+    public TemporaryFolder folder = new TemporaryFolder();
+
     @Test
     public void startEnvironment() {
         assertNotNull(scheduler);
@@ -53,14 +62,16 @@ public class QuartzTest {
     }
 
     @Test
-    public void birthdayCongratulationTest() throws JobExecutionException {
+    public void birthdayCongratulationTest() throws JobExecutionException, IOException {
         JobExecutionContext jobExecutionContext = mock(JobExecutionContext.class);
         Mockito.when(jobExecutionContext.getScheduler()).thenReturn(scheduler);
         LocalDate date = LocalDate.now();
         User user = new User("Test", "Test", "123", "test@test.ts", new City(1L, "Test"), date, "123");
         List<User> list= Arrays.asList(user);
+        File file =new File("birthday.properties");
+        file.createNewFile();
         Mockito.when(userService.findUserByBirthday(date)).thenReturn(list);
-        BirthdayCongratulation birthdayCongratulation = new BirthdayCongratulation(userService,mailService,"test", "test");
+        BirthdayCongratulation birthdayCongratulation = new BirthdayCongratulation(userService,mailService,"test", "test", file);
         birthdayCongratulation.execute(jobExecutionContext);
     }
 
