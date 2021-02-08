@@ -43,6 +43,8 @@ public class BirthdayCongratulation extends QuartzJobBean {
         this.files = files;
     }
 
+//  основное метод в котором происходит запланированное действие
+
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         LocalDate currentDate = LocalDate.now();

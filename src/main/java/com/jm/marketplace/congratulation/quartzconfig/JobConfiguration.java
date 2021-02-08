@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class JobConfiguration {
+
+    // создание бина для работы с классом и его идентификация
     @Bean
     public JobDetail jobBean() {
         return JobBuilder
@@ -14,6 +16,7 @@ public class JobConfiguration {
                 .storeDurably().build();
     }
 
+    // создание бина планировщика, который запускается в определенное время 12 00 соответствует триггеру "0 0 12 * * ?"
     @Bean
     public Trigger triggerBean(JobDetail jobDetails) {
         return TriggerBuilder.newTrigger().forJob(jobDetails)
