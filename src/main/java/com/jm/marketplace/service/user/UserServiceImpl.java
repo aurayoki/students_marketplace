@@ -1,37 +1,43 @@
 package com.jm.marketplace.service.user;
 
+import com.jm.marketplace.config.mapper.MapperFacade;
 import com.jm.marketplace.dao.UserDao;
+import com.jm.marketplace.dto.UserDto;
 import com.jm.marketplace.exception.UserEmailExistsException;
+import com.jm.marketplace.exception.UserNotFoundException;
 import com.jm.marketplace.exception.UserPhoneExistsException;
 import com.jm.marketplace.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
+    private final MapperFacade mapperFacade;
 
     @Autowired
-    public UserServiceImpl(UserDao userDao) {
+    public UserServiceImpl(UserDao userDao, MapperFacade mapperFacade) {
         this.userDao = userDao;
+        this.mapperFacade = mapperFacade;
     }
 
     @Override
     @Transactional
-    public void saveUser(User user) {
-        userDao.save(user);
+    public void saveUser(UserDto userDto) {
+        userDao.save(mapperFacade.map(userDto, User.class));
     }
 
+    @Transactional(readOnly = true)
     @Override
-    @Transactional
-    public Optional<User> findById(Long id) {
-        return userDao.findById(id);
+    public UserDto findById(Long id) {
+        User user = userDao.findById(id).orElseThrow(() ->
+                new UserNotFoundException(String.format("User not found by id: %s", id)));
+        return mapperFacade.map(user, UserDto.class);
     }
 
     @Override
@@ -39,20 +45,15 @@ public class UserServiceImpl implements UserService {
         return userDao.findUserByBirthday(date);
     }
 
+    @Transactional(readOnly = true)
     @Override
-    public List<User> findAll() {
-        return userDao.findAll();
+    public List<UserDto> findAll() {
+        return mapperFacade.mapAsList(userDao.findAll(), UserDto.class);
     }
 
     @Override
-    public List<User> findAllById(ArrayList<Long> arrayList) { return userDao.findAllById(arrayList); }
-
-    @Override
-    public void deleteInBatch(ArrayList<User> arrayList) { userDao.deleteInBatch(arrayList); };
-
-    @Override
-    public User getOne(Long id) {
-        return userDao.getOne(id);
+    public void deleteById(Long id) {
+      userDao.deleteById(id);
     }
 
     @Override

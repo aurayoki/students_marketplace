@@ -4,10 +4,19 @@ import com.jm.marketplace.model.goods.GoodCategory;
 import com.jm.marketplace.model.goods.GoodSubcategory;
 import com.jm.marketplace.model.goods.GoodType;
 import com.jm.marketplace.model.user.User;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
+@Table(name = "advertisement")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Advertisement {
 
     @Id
@@ -42,75 +51,4 @@ public class Advertisement {
     @JoinColumn(name = "good_type_id", nullable = false)
     private GoodType goodType;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    public String getDesription() {
-        return desription;
-    }
-
-    public void setDesription(String desription) {
-        this.desription = desription;
-    }
-
-    public GoodCategory getGoodCategory() {
-        return goodCategory;
-    }
-
-    public void setGoodCategory(GoodCategory goodCategory) {
-        this.goodCategory = goodCategory;
-    }
-
-    public GoodSubcategory getGoodSubcategory() {
-        return goodSubcategory;
-    }
-
-    public void setGoodSubcategory(GoodSubcategory goodSubcategory) {
-        this.goodSubcategory = goodSubcategory;
-    }
-
-    public GoodType getGoodType() {
-        return goodType;
-    }
-
-    public void setGoodType(GoodType goodType) {
-        this.goodType = goodType;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
