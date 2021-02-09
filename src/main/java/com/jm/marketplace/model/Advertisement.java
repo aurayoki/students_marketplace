@@ -1,8 +1,8 @@
 package com.jm.marketplace.model;
 
-import com.jm.marketplace.model.goods.GoodCategory;
-import com.jm.marketplace.model.goods.GoodSubcategory;
-import com.jm.marketplace.model.goods.GoodType;
+import com.jm.marketplace.model.goods.GoodsCategory;
+import com.jm.marketplace.model.goods.GoodsSubcategory;
+import com.jm.marketplace.model.goods.GoodsType;
 import com.jm.marketplace.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,7 +30,7 @@ public class Advertisement {
     private Integer price;
 
     @Column(name = "description")
-    private String desription;
+    private String description;
 
     @Column(name = "image")
     private String image;
@@ -41,14 +41,14 @@ public class Advertisement {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "good_category_id", nullable = false)
-    private GoodCategory goodCategory;
+    private GoodsCategory goodsCategory;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "good_subcategory_id", nullable = false)
-    private GoodSubcategory goodSubcategory;
+    private GoodsSubcategory goodsSubcategory;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "good_type_id", nullable = false)
-    private GoodType goodType;
+    private GoodsType goodsType;
 
 }
