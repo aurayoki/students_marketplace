@@ -36,3 +36,4 @@ INSERT INTO `marketplace`.`advertisement` (`id`, `description`, `name`, `price`,
 INSERT INTO `marketplace`.`advertisement` (`id`, `description`, `name`, `price`, `good_category_id`, `good_subcategory_id`, `good_type_id`) VALUES ('2', 'AM4', 'Материнская плата', '18000', '7', '8', '5');
 INSERT INTO `marketplace`.`advertisement` (`id`, `description`, `name`, `price`, `good_category_id`, `good_subcategory_id`, `good_type_id`) VALUES ('3', 'для игр и работы', 'Ноутбук lenovo', '23000', '7', '8', '5');
 INSERT INTO `marketplace`.`advertisement` (`id`, `description`, `name`, `price`, `good_category_id`, `good_subcategory_id`, `good_type_id`) VALUES ('4', 'Игровой', 'Монитор AOC CQ32', '21000', '7', '8', '5');
+INSERT INTO `marketplace`.`advertisement` (`id`, `description`, `name`, `price`, `good_category_id`, `good_subcategory_id`, `good_type_id`) VALUES ('4', 'Игровой', 'Монитор AOC CQ32', '21000', '7', '8', '5');
