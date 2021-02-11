@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = "/")
@@ -19,8 +20,9 @@ public class MainController {
     }
 
     @GetMapping
-    public String showMainPage(Model model) {
-        model.addAttribute("allGoods", advertisementService.findAll());
+    public String showMainPage(Model model,
+                               @RequestParam(value = "page", required = false, defaultValue = "0") Integer page) {
+        model.addAttribute("allGoods", advertisementService.findAllWithPagination(page));
         return "index";
     }
 }

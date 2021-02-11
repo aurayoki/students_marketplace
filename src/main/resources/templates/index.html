@@ -12,7 +12,7 @@
 
             </div>
             <div class="col-9" id="goodsTable">
-                <ul class="list-unstyled" th:each="goods : ${allGoods}">
+                <ul class="list-unstyled" th:each="goods : ${allGoods.getContent()}">
                     <li class="media bg-light m-2 border rounded shadow-sm">
                         <div class="media col p-3">
                             <img src="/img/image-none.png" class="align-self-center mr-3 w-25 h-25" alt="">
@@ -25,6 +25,21 @@
                     </li>
                 </ul>
             </div>
+        </div>
+        <div class="row mt-3">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link"
+                                             th:href="@{'/?page='+ ${allGoods.previousOrFirstPageable().getPageNumber() + 1}}">Previous</a>
+                    </li>
+                    <li class="page-item" th:classappend="${allGoods.getNumber() + 1 == index ? 'active' : ''}"
+                        th:each="index : ${#numbers.sequence(1, (allGoods.getTotalPages() == 0) ? 1 : allGoods.getTotalPages())}">
+                        <a class="page-link" th:text="${index}" th:href="@{'/?page=' + ${index}}"></a></li>
+                    <li class="page-item"><a class="page-link"
+                                             th:href="@{'/?page='+ ${allGoods.nextOrLastPageable().getPageNumber() + 1}}">Next</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
