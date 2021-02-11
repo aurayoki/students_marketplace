@@ -3,6 +3,7 @@ package com.jm.marketplace.service.advertisement;
 import com.jm.marketplace.config.mapper.MapperFacade;
 import com.jm.marketplace.dao.AdvertisementDao;
 import com.jm.marketplace.dto.goods.AdvertisementDto;
+import com.jm.marketplace.exception.AdvertisementNotFoundException;
 import com.jm.marketplace.model.Advertisement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -43,7 +44,9 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     @Transactional(readOnly = true)
     @Override
     public AdvertisementDto findById(Long id) {
-        return mapperFacade.map(advertisementDao.findById(id).get(), AdvertisementDto.class);
+        Advertisement advertisement = advertisementDao.findById(id).orElseThrow(() ->
+                new AdvertisementNotFoundException(String.format("Advertisement not found by id: %s", id)));
+        return mapperFacade.map(advertisement, AdvertisementDto.class);
     }
 
     @Transactional
