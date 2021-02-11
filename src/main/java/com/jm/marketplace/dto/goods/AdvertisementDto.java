@@ -16,6 +16,10 @@ public class AdvertisementDto {
     private Integer price;
     private String description;
     private UserDto user;
+    private String image;
+    private boolean active;
+    private boolean expired;
+    private boolean banned;
     private GoodsCategoryDto goodsCategory;
     private GoodsSubcategoryDto goodsSubcategory;
     private GoodsTypeDto goodsType;

@@ -35,6 +35,15 @@ public class Advertisement {
     @Column(name = "image")
     private String image;
 
+    @Column(name = "active")
+    private boolean active;
+
+    @Column(name = "expired")
+    private boolean expired;
+
+    @Column(name = "banned")
+    private boolean banned;
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
