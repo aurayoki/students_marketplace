@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headers::head('Main page')"></head>
+<body>
+
+<nav th:replace="fragments/headers::navbar"></nav>
+
+<div class="container-fluid mt-4">
+    <div class="container">
+        <div class="card-header">
+            <h5>All users</h5>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+
+                <thead>
+                <!-- Шапка колонок таблицы -->
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Email</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Phone</th>
+                    <th>Roles</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <!-- Обходим список пользователей который получили из контроллера" -->
+                <tr th:each="user : ${users}">
+
+                    <!-- Заполняем в строке все поля пользователя "Edit" -->
+                    <td th:text="${user.getId()}"></td>
+                    <td><p th:text="${user.getDate()}"></p></td>
+                    <td><p th:text="${user.getEmail()}"></p></td>
+                    <td><p th:text="${user.getFirstName()}"></p></td>
+                    <td><p th:text="${user.getLastName()}"></p></td>
+                    <td><p th:text="${user.getPhone()}"></p></td>
+                    <td><p th:text="${user.getRolesString()}"></p></td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
