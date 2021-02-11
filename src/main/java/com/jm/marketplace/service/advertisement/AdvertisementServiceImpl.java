@@ -4,6 +4,7 @@ import com.jm.marketplace.config.mapper.MapperFacade;
 import com.jm.marketplace.dao.AdvertisementDao;
 import com.jm.marketplace.dto.goods.AdvertisementDto;
 import com.jm.marketplace.exception.AdvertisementNotFoundException;
+import com.jm.marketplace.filter.AdvertisementFilter;
 import com.jm.marketplace.model.Advertisement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,7 +12,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class AdvertisementServiceImpl implements AdvertisementService {
@@ -34,10 +37,16 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 
     @Transactional(readOnly = true)
     @Override
-    public Page<AdvertisementDto> findAllWithPagination(Integer page) {
-        page = getCorrectPage(page);
+    public Page<AdvertisementDto> findAll(Integer page) {
+        return findAll(page, new HashMap<>());
+    }
 
-        Page<Advertisement> advertisements = advertisementDao.findAll(PageRequest.of(page, SIZE_PAGE));
+    @Transactional(readOnly = true)
+    @Override
+    public Page<AdvertisementDto> findAll(Integer page, Map<String, String> params) {
+        page = getCorrectPage(page);
+        AdvertisementFilter filter = new AdvertisementFilter(params);
+        Page<Advertisement> advertisements = advertisementDao.findAll(filter.getSpecification(), PageRequest.of(page, SIZE_PAGE));
         return advertisements.map(advertisement -> mapperFacade.map(advertisement, AdvertisementDto.class));
     }
 
