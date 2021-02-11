@@ -31,7 +31,6 @@
                 <!-- Обходим список пользователей который получили из контроллера" -->
                 <tr th:each="user : ${users}">
 
-                    <!-- Заполняем в строке все поля пользователя "Edit" -->
                     <td th:text="${user.getId()}"></td>
                     <td><p th:text="${user.getDate()}"></p></td>
                     <td><p th:text="${user.getEmail()}"></p></td>
