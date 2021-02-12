@@ -11,6 +11,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/static/**").permitAll()
+                .antMatchers("/**").permitAll()
                 .antMatchers("/api/**").permitAll();
 
         // без этого не работали методы post/put/delete рест контроллера
