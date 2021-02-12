@@ -2,7 +2,7 @@ package com.jm.marketplace.service.telegram;
 
 import com.jm.marketplace.dto.goods.AdvertisementDto;
 import com.jm.marketplace.service.advertisement.AdvertisementService;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Log4j2
+@Slf4j
 @PropertySource(value = "classpath:telegram.properties", encoding = "UTF-8")
 public class Bot extends TelegramLongPollingBot {
 
@@ -59,7 +59,6 @@ public class Bot extends TelegramLongPollingBot {
         try {
             SendMessage sendMessage = new SendMessage();
             sendMessage.setChatId(update.getMessage().getChatId().toString());
-            sendMessage.setReplyMarkup(replyKeyboardMarkup);
 
             setButtons(sendMessage);
 
@@ -95,6 +94,7 @@ public class Bot extends TelegramLongPollingBot {
         keyboardFirstRow.add(listAdvertisement);
         keyboard.clear();
         keyboard.add(keyboardFirstRow);
+        sendMessage.setReplyMarkup(replyKeyboardMarkup);
     }
 
     private void configKeyboard() {
