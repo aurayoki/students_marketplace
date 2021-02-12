@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headers::head('Admin page')"></head>
+<body>
+
+<nav th:replace="fragments/headers::navbar"></nav>
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+            <th scope="col">User</th>
+            <th scope="col">Goods Category</th>
+            <th scope="col">Goods Subcategory</th>
+            <th scope="col">Goods Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="goods : ${advertisementInActive.getContent()}">
+            <td th:text="${goods.id}"></td>
+            <td th:text="${goods.name}"></td>
+            <td th:text="${goods.price}"></td>
+            <td th:text="${goods.description}"></td>
+            <td th:text="${goods.user.firstName} + ' ' + ${goods.user.lastName}"></td>
+            <td th:text="${goods.goodsCategory.name}"></td>
+            <td th:text="${goods.goodsSubcategory.name}"></td>
+            <td th:text="${goods.goodsType.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row mt-3">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link"
+                                         th:href="@{'/admin/adv_in_active?page='+ ${advertisementInActive.previousOrFirstPageable().getPageNumber() + 1}}">Previous</a>
+                </li>
+                <li class="page-item" th:classappend="${advertisementInActive.getNumber() + 1 == index ? 'active' : ''}"
+                    th:each="index : ${#numbers.sequence(1, (advertisementInActive.getTotalPages() == 0) ? 1 : advertisementInActive.getTotalPages())}">
+                    <a class="page-link" th:text="${index}" th:href="@{'/admin/adv_in_active?page=' + ${index}}"></a></li>
+                <li class="page-item"><a class="page-link"
+                                         th:href="@{'/admin/adv_in_active?page='+ ${advertisementInActive.nextOrLastPageable().getPageNumber() + 1}}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+</body>
+</html>

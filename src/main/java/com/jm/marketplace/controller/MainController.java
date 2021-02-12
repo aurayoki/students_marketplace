@@ -27,7 +27,7 @@ public class MainController {
     @GetMapping
     public String showMainPage(Model model,
                                @RequestParam(value = "page", required = false, defaultValue = "0") Integer page) {
-        model.addAttribute("allGoods", advertisementService.findAllWithPagination(page));
+        model.addAttribute("allGoods", advertisementService.findAll(page));
         return "index";
     }
 
