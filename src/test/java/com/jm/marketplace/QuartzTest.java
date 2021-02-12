@@ -1,8 +1,8 @@
 package com.jm.marketplace;
 
-import com.jm.marketplace.congratulation.BirthdayCongratulation;
+import com.jm.marketplace.config.quartzconfig.BirthdayCongratulation;
 import com.jm.marketplace.model.City;
-import com.jm.marketplace.model.user.User;
+import com.jm.marketplace.model.User;
 import com.jm.marketplace.service.user.UserService;
 import com.jm.marketplace.util.mail.MailService;
 import com.mchange.v2.beans.swing.TestBean;
@@ -18,6 +18,7 @@ import org.quartz.SchedulerContext;
 import org.quartz.SchedulerFactory;
 import org.quartz.spi.JobFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.StaticApplicationContext;
@@ -43,6 +44,7 @@ public class QuartzTest {
     @Autowired
     private Scheduler scheduler;
 
+    @Qualifier(value = "birthdayCongratulation")
     @Autowired
     private QuartzJobBean quartzJobBean;
 
@@ -71,7 +73,7 @@ public class QuartzTest {
         LocalDate date = LocalDate.now();
         User user = new User("Test", "Test", "123", "test@test.ts", new City(1L, "Test"), date, "123");
         List<User> list= Arrays.asList(user);
-        File file =new File("birthday.properties");
+        File file =new File("quartz.properties");
         file.createNewFile();
         Mockito.when(userService.findUserByBirthday(date)).thenReturn(list);
         BirthdayCongratulation birthdayCongratulation = new BirthdayCongratulation(userService,mailService,"test", "test", file);

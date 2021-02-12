@@ -1,7 +1,7 @@
 package com.jm.marketplace.util.mail;
 
 import com.jm.marketplace.model.City;
-import com.jm.marketplace.model.user.User;
+import com.jm.marketplace.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.jm.marketplace.model.user;
+package com.jm.marketplace.model;
 
 import com.jm.marketplace.model.Advertisement;
 import com.jm.marketplace.model.City;

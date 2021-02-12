@@ -6,7 +6,7 @@ import com.jm.marketplace.dto.UserDto;
 import com.jm.marketplace.exception.UserEmailExistsException;
 import com.jm.marketplace.exception.UserNotFoundException;
 import com.jm.marketplace.exception.UserPhoneExistsException;
-import com.jm.marketplace.model.user.User;
+import com.jm.marketplace.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

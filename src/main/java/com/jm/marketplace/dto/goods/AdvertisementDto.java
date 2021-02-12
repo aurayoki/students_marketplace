@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -19,10 +20,10 @@ public class AdvertisementDto {
     private String description;
     private UserDto user;
     private String image;
-    private LocalDate publication_date;
-    private boolean active;
-    private boolean expired;
-    private boolean banned;
+    private LocalDateTime publication_date;
+    private Boolean active;
+    private Boolean expired;
+    private Boolean banned;
     private GoodsCategoryDto goodsCategory;
     private GoodsSubcategoryDto goodsSubcategory;
     private GoodsTypeDto goodsType;

@@ -1,10 +1,10 @@
-package com.jm.marketplace.congratulation;
+package com.jm.marketplace.config.quartzconfig;
 
-import com.jm.marketplace.model.user.User;
+import com.jm.marketplace.model.User;
 import com.jm.marketplace.service.user.UserService;
 import com.jm.marketplace.util.mail.MailService;
-import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +17,10 @@ import java.io.File;
 import java.time.LocalDate;
 import java.util.Collection;
 
-@Data
+@Slf4j
 @Service
 @NoArgsConstructor
-@PropertySource(value = "classpath:birthday.properties")
+@PropertySource(value = "classpath:quartz.properties")
 public class BirthdayCongratulation extends QuartzJobBean {
 
     @Autowired
@@ -47,6 +47,7 @@ public class BirthdayCongratulation extends QuartzJobBean {
 
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        log.info("Запущена проверка ДР");
         LocalDate currentDate = LocalDate.now();
         try {
             Collection<User> users = userService.findUserByBirthday(currentDate);

@@ -1,7 +1,7 @@
 package com.jm.marketplace.service.user;
 
 import com.jm.marketplace.dto.UserDto;
-import com.jm.marketplace.model.user.User;
+import com.jm.marketplace.model.User;
 
 import java.time.LocalDate;
 import java.util.List;
