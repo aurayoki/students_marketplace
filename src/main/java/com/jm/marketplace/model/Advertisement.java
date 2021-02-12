@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "advertisement")
@@ -34,6 +35,18 @@ public class Advertisement {
 
     @Column(name = "image")
     private String image;
+
+    @Column(name = "active")
+    private boolean active;
+
+    @Column(name = "expired")
+    private boolean expired;
+
+    @Column(name = "publication_date")
+    private LocalDate publication_date;
+
+    @Column(name = "banned")
+    private boolean banned;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "user_id", nullable = false)
