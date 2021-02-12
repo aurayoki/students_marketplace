@@ -16,7 +16,7 @@ public class MainController {
     private final AdvertisementService advertisementService;
 
     @Autowired
-    public MainController(AdvertisementService advertisementService, UserService userService) {
+    public MainController(AdvertisementService advertisementService) {
         this.advertisementService = advertisementService;
     }
 
