@@ -26,4 +26,12 @@ public class UserDto {
     private String userImg;
     private Set<RoleDto> roles;
     private Set<AdvertisementDto> advertisements;
+
+    public String getRolesString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (RoleDto role : roles) {
+            stringBuilder.append(role.getName()).append(" ");
+        }
+        return stringBuilder.toString();
+    }
 }

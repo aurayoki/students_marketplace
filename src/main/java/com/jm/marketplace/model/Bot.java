@@ -8,7 +8,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 // Аннотация @Component необходима, чтобы наш класс распознавался Spring, как полноправный Bean
-@Component
+// @Component
 // Наследуемся от TelegramLongPollingBot - абстрактного класса Telegram API
 public class Bot extends TelegramLongPollingBot {
     // Аннотация @Value позволяет задавать значение полю путем считывания из application.yaml

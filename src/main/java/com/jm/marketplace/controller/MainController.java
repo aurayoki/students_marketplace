@@ -1,6 +1,7 @@
 package com.jm.marketplace.controller;
 
 import com.jm.marketplace.service.advertisement.AdvertisementService;
+import com.jm.marketplace.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +15,13 @@ public class MainController {
 
     private final AdvertisementService advertisementService;
 
+    private final UserService userService;
+
+
     @Autowired
-    public MainController(AdvertisementService advertisementService) {
+    public MainController(AdvertisementService advertisementService, UserService userService) {
         this.advertisementService = advertisementService;
+        this.userService = userService;
     }
 
     @GetMapping
@@ -24,5 +29,12 @@ public class MainController {
                                @RequestParam(value = "page", required = false, defaultValue = "0") Integer page) {
         model.addAttribute("allGoods", advertisementService.findAllWithPagination(page));
         return "index";
+    }
+
+    @GetMapping("/admin")
+    public String showAdminPage(Model model,
+                               @RequestParam(value = "page", required = false, defaultValue = "0") Integer page) {
+        model.addAttribute("users", userService.findAll());
+        return "admin/index";
     }
 }
