@@ -15,13 +15,9 @@ public class MainController {
 
     private final AdvertisementService advertisementService;
 
-    private final UserService userService;
-
-
     @Autowired
     public MainController(AdvertisementService advertisementService, UserService userService) {
         this.advertisementService = advertisementService;
-        this.userService = userService;
     }
 
     @GetMapping
@@ -31,10 +27,5 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/admin")
-    public String showAdminPage(Model model,
-                               @RequestParam(value = "page", required = false, defaultValue = "0") Integer page) {
-        model.addAttribute("users", userService.findAll());
-        return "admin/index";
-    }
+
 }

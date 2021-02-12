@@ -1,6 +1,7 @@
 package com.jm.marketplace.controller;
 
 import com.jm.marketplace.service.advertisement.AdvertisementService;
+import com.jm.marketplace.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +17,19 @@ import java.util.Map;
 public class AdminController {
 
     private final AdvertisementService advertisementService;
+    private final UserService userService;
 
     @Autowired
-    public AdminController(AdvertisementService advertisementService) {
+    public AdminController(AdvertisementService advertisementService, UserService userService) {
         this.advertisementService = advertisementService;
+        this.userService = userService;
+    }
+
+    @GetMapping
+    public String showAdminPage(Model model,
+                                @RequestParam(value = "page", required = false, defaultValue = "0") Integer page) {
+        model.addAttribute("users", userService.findAll());
+        return "admin/index";
     }
 
     @GetMapping(value = "/adv_in_active")
