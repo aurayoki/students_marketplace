@@ -37,16 +37,16 @@ public class Advertisement {
     private String image;
 
     @Column(name = "active")
-    private boolean active;
+    private Boolean active;
 
     @Column(name = "expired")
-    private boolean expired;
+    private Boolean expired;
 
     @Column(name = "publication_date")
     private LocalDate publication_date;
 
     @Column(name = "banned")
-    private boolean banned;
+    private Boolean banned;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "user_id", nullable = false)
