@@ -70,6 +70,12 @@ public class AdvertisementServiceImpl implements AdvertisementService {
         advertisementDao.deleteById(id);
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public List<AdvertisementDto> findAdvertisementByStatusActive(Boolean active) {
+        return mapperFacade.mapAsList(advertisementDao.findAdvertisementByStatusActive(active), AdvertisementDto.class);
+    }
+
     private Integer getCorrectPage(Integer page) {
         if (page == null || page < 1) return 0;
         else return page - 1;

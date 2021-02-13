@@ -3,14 +3,13 @@ package com.jm.marketplace.model;
 import com.jm.marketplace.model.goods.GoodsCategory;
 import com.jm.marketplace.model.goods.GoodsSubcategory;
 import com.jm.marketplace.model.goods.GoodsType;
-import com.jm.marketplace.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "advertisement")
@@ -42,8 +41,8 @@ public class Advertisement {
     @Column(name = "expired")
     private Boolean expired;
 
-    @Column(name = "publication_date")
-    private LocalDate publication_date;
+    @Column(name = "publication_date_time")
+    private LocalDateTime publication_date;
 
     @Column(name = "banned")
     private Boolean banned;
