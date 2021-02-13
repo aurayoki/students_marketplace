@@ -32,7 +32,7 @@ INSERT INTO `marketplace`.`good_type` (`id`, `name`, `good_subcategory_id`) VALU
 INSERT INTO `marketplace`.`good_type` (`id`, `name`, `good_subcategory_id`) VALUES ('10', 'Флешки и карты памяти', '8');
 INSERT INTO `marketplace`.`good_type` (`id`, `name`, `good_subcategory_id`) VALUES ('11', 'Аксессуары', '8');
 
-INSERT INTO `marketplace`.`advertisement` (`id`, `description`, `name`, `price`, `good_category_id`, `good_subcategory_id`, `good_type_id`) VALUES ('1', 'В идеальном состоянии включался один раз', 'Компьютер AMD', '16000', '7', '8', '5');
-INSERT INTO `marketplace`.`advertisement` (`id`, `description`, `name`, `price`, `good_category_id`, `good_subcategory_id`, `good_type_id`) VALUES ('2', 'AM4', 'Материнская плата', '18000', '7', '8', '5');
-INSERT INTO `marketplace`.`advertisement` (`id`, `description`, `name`, `price`, `good_category_id`, `good_subcategory_id`, `good_type_id`) VALUES ('3', 'для игр и работы', 'Ноутбук lenovo', '23000', '7', '8', '5');
-INSERT INTO `marketplace`.`advertisement` (`id`, `description`, `name`, `price`, `good_category_id`, `good_subcategory_id`, `good_type_id`) VALUES ('4', 'Игровой', 'Монитор AOC CQ32', '21000', '7', '8', '5');
+INSERT INTO `marketplace`.`advertisement` (`id`, `description`, `name`, `price`, `good_category_id`, `good_subcategory_id`, `good_type_id`, `user_id`) VALUES ('1', 'В идеальном состоянии включался один раз', 'Компьютер AMD', '16000', '7', '8', '5', '1');
+INSERT INTO `marketplace`.`advertisement` (`id`, `description`, `name`, `price`, `good_category_id`, `good_subcategory_id`, `good_type_id`, `user_id`) VALUES ('2', 'AM4', 'Материнская плата', '18000', '7', '8', '5', '1');
+INSERT INTO `marketplace`.`advertisement` (`id`, `description`, `name`, `price`, `good_category_id`, `good_subcategory_id`, `good_type_id`, `user_id`) VALUES ('3', 'для игр и работы', 'Ноутбук lenovo', '23000', '7', '8', '5', '1');
+INSERT INTO `marketplace`.`advertisement` (`id`, `description`, `name`, `price`, `good_category_id`, `good_subcategory_id`, `good_type_id`, `user_id`) VALUES ('4', 'Игровой', 'Монитор AOC CQ32', '21000', '7', '8', '5', '1');
