@@ -40,6 +40,7 @@ public class UserServiceImpl implements UserService {
         return mapperFacade.map(user, UserDto.class);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<User> findUserByBirthday(LocalDate date) {
         return userDao.findUserByBirthday(date);
@@ -51,21 +52,25 @@ public class UserServiceImpl implements UserService {
         return mapperFacade.mapAsList(userDao.findAll(), UserDto.class);
     }
 
+    @Transactional
     @Override
     public void deleteById(Long id) {
       userDao.deleteById(id);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public User findByEmail(String email) {
         return userDao.findByEmail(email).orElseThrow(() -> new UserEmailExistsException("Пользователь с такой почтой не найден"));
     }
 
+    @Transactional(readOnly = true)
     @Override
     public boolean checkByEmail(String email) {
         return userDao.findByEmail(email).isPresent();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public User findByPhone(String phone) {
         return userDao.findByPhone(phone).orElseThrow(() -> new UserPhoneExistsException("Пользователь с таким номером телефона не найден"));

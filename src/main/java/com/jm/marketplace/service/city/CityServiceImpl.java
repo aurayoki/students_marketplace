@@ -7,6 +7,7 @@ import com.jm.marketplace.exception.CityNotFoundException;
 import com.jm.marketplace.model.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,11 +23,13 @@ public class CityServiceImpl implements CityService{
         this.mapperFacade = mapperFacade;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<CityDto> getAllCity() {
         return mapperFacade.mapAsList(cityDao.findAll(), CityDto.class);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public CityDto findById(Long id) {
         City city = cityDao.findById(id).orElseThrow(() ->
