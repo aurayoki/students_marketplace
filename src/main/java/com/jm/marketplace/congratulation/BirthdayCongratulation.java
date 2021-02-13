@@ -20,7 +20,7 @@ import java.util.Collection;
 @Data
 @Service
 @NoArgsConstructor
-@PropertySource(value = "classpath:birthday.properties")
+@PropertySource(value = "classpath:quartz.properties")
 public class BirthdayCongratulation extends QuartzJobBean {
 
     @Autowired
