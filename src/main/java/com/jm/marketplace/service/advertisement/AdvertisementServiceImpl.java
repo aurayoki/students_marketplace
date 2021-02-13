@@ -21,7 +21,13 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 
     private final AdvertisementDao advertisementDao;
     private final MapperFacade mapperFacade;
+    private AdvertisementFilter advertisementFilter;
     private static final Integer SIZE_PAGE = 4;
+
+    @Autowired
+    public void setAdvertisementFilter(AdvertisementFilter advertisementFilter) {
+        this.advertisementFilter = advertisementFilter;
+    }
 
     @Autowired
     public AdvertisementServiceImpl(AdvertisementDao advertisementDao, MapperFacade mapperFacade) {
@@ -45,8 +51,7 @@ public class AdvertisementServiceImpl implements AdvertisementService {
     @Override
     public Page<AdvertisementDto> findAll(Integer page, Map<String, String> params) {
         page = getCorrectPage(page);
-        AdvertisementFilter filter = new AdvertisementFilter(params);
-        Page<Advertisement> advertisements = advertisementDao.findAll(filter.getSpecification(), PageRequest.of(page, SIZE_PAGE));
+        Page<Advertisement> advertisements = advertisementDao.findAll(advertisementFilter.getSpecification(params), PageRequest.of(page, SIZE_PAGE));
         return advertisements.map(advertisement -> mapperFacade.map(advertisement, AdvertisementDto.class));
     }
 
