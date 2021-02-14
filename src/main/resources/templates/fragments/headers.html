@@ -58,7 +58,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownAdmin">
                         <a class="dropdown-item" th:href="@{/admin/adv_in_active}">Advertisement in active</a>
                         <a class="dropdown-item" href="#">Sign up</a>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -69,9 +69,9 @@
                         Profile
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
-                        <a class="dropdown-item" href="#">Sign in</a>
+                        <a class="dropdown-item" href="/login">Sign in</a>
                         <button type="button" class="dropdown-item" data-toggle="modal" data-target="#modalRegistration">Sing up</button>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -93,25 +93,25 @@
                     <div class="col">
                         <div class="col-auto">
                             <label for="firstName">Имя</label>
-                            <input type="text" class="form-control mb-2 is-valid" id="firstName"
+                            <input type="text" class="form-control mb-2" id="firstName"
                                    th:field="*{firstName}"
                                    placeholder="Имя">
                         </div>
                         <div class="col-auto">
                             <label for="lastname">Фамилия</label>
-                            <input type="text" class="form-control mb-2 is-valid" id="lastname"
+                            <input type="text" class="form-control mb-2" id="lastname"
                                    th:field="*{lastName}"
                                    placeholder="Фамилия">
                         </div>
                         <div class="col-auto">
                             <label for="password">Пароль</label>
-                            <input type="password" class="form-control mb-2 is-valid" id="password"
+                            <input type="password" class="form-control mb-2" id="password"
                                    th:field="*{password}"
                                    placeholder="Пароль">
                         </div>
                         <div class="col-auto">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control mb-2 is-valid" id="email"
+                            <input type="email" class="form-control mb-2" id="email"
                                    th:field="*{email}"
                                    placeholder="Email">
                         </div>
@@ -126,11 +126,11 @@
                         </div>
                         <div class="col-auto">
                             <label for="dateR">Введите дату рождения</label>
-                            <input type="date" id="dateR" class="form-control is-valid" th:field="*{date}">
+                            <input type="date" id="dateR" class="form-control" th:field="*{date}">
                         </div>
                         <div class="col-auto">
                             <label for="phone">Номер телефона</label>
-                            <input type="tel" id="phone" class="form-control is-valid" th:field="*{phone}">
+                            <input type="tel" id="phone" class="form-control" th:field="*{phone}">
                         </div>
                         <br>
                         <div class="row justify-content-md-center">

@@ -2,11 +2,12 @@ package com.jm.marketplace.service.user;
 
 import com.jm.marketplace.dto.UserDto;
 import com.jm.marketplace.model.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public interface UserService {
+public interface UserService extends UserDetailsService {
 
     void saveUser (UserDto userDto);
 
