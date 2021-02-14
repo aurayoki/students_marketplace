@@ -3,6 +3,8 @@ package com.jm.marketplace.dao;
 import com.jm.marketplace.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RoleDao extends JpaRepository<Role, Long> {
+import java.util.Optional;
 
+public interface RoleDao extends JpaRepository<Role, Long> {
+    Optional<Role> findByName(String name);
 }
