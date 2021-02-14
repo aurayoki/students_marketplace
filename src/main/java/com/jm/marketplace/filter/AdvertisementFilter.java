@@ -3,30 +3,24 @@ package com.jm.marketplace.filter;
 import com.jm.marketplace.model.Advertisement;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
 @Log4j2
+@Component
 public class AdvertisementFilter {
 
-    private Specification<Advertisement> specification;
-    private final Map<String, String> params;
-
-    public AdvertisementFilter(Map<String, String> params) {
-        this.params = params;
-        this.specification = Specification.where(null);
-    }
-
-
-    public Specification<Advertisement> getSpecification() {
+    public Specification<Advertisement> getSpecification(Map<String, String> params) {
+        Specification<Advertisement> specification = Specification.where(null);
         if (params == null || params.isEmpty()) return specification;
 
-        processInActiveFilter();
+        specification = processInActiveFilter(specification, params);
 
         return specification;
     }
 
-    private void processInActiveFilter() {
+    private Specification<Advertisement> processInActiveFilter(Specification<Advertisement> specification, Map<String, String> params) {
 
         String active = params.get("active");
         if (active != null && !active.isBlank()) {
@@ -34,5 +28,7 @@ public class AdvertisementFilter {
                     (root, criteriaQuery, criteriaBuilder) ->
                             criteriaBuilder.isTrue(root.get("active")));
         }
+
+        return specification;
     }
 }
