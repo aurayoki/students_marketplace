@@ -1,8 +1,5 @@
 package com.jm.marketplace.model;
 
-import com.jm.marketplace.model.Advertisement;
-import com.jm.marketplace.model.City;
-import com.jm.marketplace.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -76,5 +73,12 @@ public class User {
         this.city = city;
         this.date = date;
         this.phone = phone;
+    }
+
+    public User(String firstName, String lastName, String password, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
     }
 }

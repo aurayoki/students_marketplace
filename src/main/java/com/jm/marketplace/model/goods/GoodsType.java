@@ -26,4 +26,8 @@ public class GoodsType {
     @JoinColumn(name = "good_subcategory_id", nullable=false)
     private GoodsSubcategory goodsSubcategory;
 
+    public GoodsType(String name, GoodsSubcategory goodsSubcategory) {
+        this.name = name;
+        this.goodsSubcategory = goodsSubcategory;
+    }
 }
