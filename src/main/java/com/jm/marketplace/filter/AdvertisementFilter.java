@@ -11,18 +11,16 @@ import java.util.Map;
 @Component
 public class AdvertisementFilter {
 
-    private Specification<Advertisement> specification;
-
     public Specification<Advertisement> getSpecification(Map<String, String> params) {
-        this.specification = Specification.where(null);
+        Specification<Advertisement> specification = Specification.where(null);
         if (params == null || params.isEmpty()) return specification;
 
-        processInActiveFilter(params);
+        specification = processInActiveFilter(specification, params);
 
         return specification;
     }
 
-    private void processInActiveFilter(Map<String, String> params) {
+    private Specification<Advertisement> processInActiveFilter(Specification<Advertisement> specification, Map<String, String> params) {
 
         String active = params.get("active");
         if (active != null && !active.isBlank()) {
@@ -30,5 +28,7 @@ public class AdvertisementFilter {
                     (root, criteriaQuery, criteriaBuilder) ->
                             criteriaBuilder.isTrue(root.get("active")));
         }
+
+        return specification;
     }
 }
