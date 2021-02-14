@@ -6,10 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface GoodsSubcategoryDao extends JpaRepository<GoodsSubcategory, Long> {
 
     @Query(value = "FROM GoodsSubcategory AS g WHERE g.goodsCategory.id = :id")
     List<GoodsSubcategory> findByGoodsCategoryId(@Param(value = "id") Long id);
 
+    Optional<GoodsSubcategory> findByName(String name);
 }

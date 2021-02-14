@@ -8,7 +8,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
@@ -63,4 +72,19 @@ public class Advertisement {
     @JoinColumn(name = "good_type_id", nullable = false)
     private GoodsType goodsType;
 
+    public Advertisement(String name,
+                         Integer price,
+                         String description,
+                         GoodsCategory goodsCategory,
+                         GoodsSubcategory goodsSubcategory,
+                         GoodsType goodsType,
+                         User user) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.goodsCategory = goodsCategory;
+        this.goodsSubcategory = goodsSubcategory;
+        this.goodsType = goodsType;
+        this.user = user;
+    }
 }

@@ -32,4 +32,8 @@ public class GoodsCategory {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "goodsCategory")
     private Set<GoodsSubcategory> goodsSubcategory;
+
+    public GoodsCategory(String name) {
+        this.name = name;
+    }
 }
